@@ -1,0 +1,1 @@
+This project is a Web UI application that shows patients' hospital visit records.
