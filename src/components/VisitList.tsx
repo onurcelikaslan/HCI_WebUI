@@ -5,6 +5,7 @@ import { Visit } from "../models/Visit";
 export const VisitList: React.FC<VisitProps> = ({ patientId, hospitalId }) => {
     const [visits, setVisits] = useState<Visit[]>([]);
     const baseUrl = process.env.REACT_APP_BASE_URL;
+    console.log(`baseUrl : ${baseUrl}`);
 
     useEffect(() => {
         const searchParams = new URLSearchParams();
