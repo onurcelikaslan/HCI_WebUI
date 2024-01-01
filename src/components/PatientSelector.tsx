@@ -27,9 +27,9 @@ const PatientSelector = ({ selectedItem, onSelectedItemChange }:Props) => {
           setSelected([...selected, c]);
           selectedItem = c.id;
         }}
-        defaultValue="default"
+        defaultValue=""
       >
-        <option value="default">Choose a patient</option>
+        <option value="">Choose a patient</option>
         {patients
           ? patients.map((patient) => {
             return (
