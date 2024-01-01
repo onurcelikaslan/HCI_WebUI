@@ -8,7 +8,6 @@ type Props = {
 
 const HospitalSelector = ({ selectedItem, onSelectedItemChange }:Props) => {
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
-  const [selected, setSelected] = useState<Hospital[]>([]);
     
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL + "hospitals")
@@ -21,10 +20,14 @@ const HospitalSelector = ({ selectedItem, onSelectedItemChange }:Props) => {
     <div>
       <select
         onChange={(e) => {
-          onSelectedItemChange?.(e.target.value);
-          const c = hospitals?.find((x) => x.id === e.target.value) as Hospital;
-          setSelected([...selected, c]);
-          selectedItem = c.id;
+          if (e.target.value !== "") {
+            const c = hospitals?.find((x) => x.id === e.target.value) as Hospital;
+            onSelectedItemChange?.(e.target.value);
+            selectedItem = c.id;
+          } else {
+            onSelectedItemChange?.("");
+            selectedItem = "";
+          }
         }}
         defaultValue=""
       >
